@@ -1,6 +1,9 @@
-import Search from './pages/Search/Search';
 import './App.css';
+
+import Search from './pages/Search/Search';
 import MyList from './pages/MyList/MyList';
+import Menu from './components/Menu/Menu';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -8,14 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/myList">My List</Link>
-            </li>
-          </ul>
+          <Menu />
           <Switch>
             <Route exact path="/">
               <Search />
