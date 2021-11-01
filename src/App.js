@@ -1,10 +1,11 @@
 import './App.css';
 
-import Search from './pages/Search/Search';
 import MyList from './pages/MyList/MyList';
+import SearchInput from './pages/SearchInput/SearchInput';
+import Film from './pages/Film/Film';
 import Menu from './components/Menu/Menu';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -14,10 +15,13 @@ function App() {
           <Menu />
           <Switch>
             <Route exact path="/">
-              <Search />
+              <SearchInput />
             </Route>
             <Route path="/myList">
               <MyList />
+            </Route>
+            <Route path="/film/:id">
+              <Film />
             </Route>
           </Switch>
         </div>
