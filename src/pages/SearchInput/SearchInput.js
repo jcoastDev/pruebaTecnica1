@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import getFilms from '../../helpers/getFilms';
 import FilmList from '../../components/FilmList/FilmList';
 
 import './SearchInput.css';
 import PageSelector from '../../components/PageSelector/PageSelector';
+import useSearch from '../../hooks/useSearch';
 
 export default function SearchInput() {
   const [keyword, setKeyword] = useState('');
-  const [page, setPage] = useState('');
-  const [films, setFilms] = useState([]);
+  const [searchedKeyword, setSearchedKeyword] = useState('');
+  const [loading, search, newSearch] = useSearch('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getFilms(keyword, 1).then((films) => setFilms(films));
-    console.log(films);
+    newSearch(keyword, 1);
+    setSearchedKeyword(keyword);
+    console.log(search);
   };
   const handleChange = (e) => {
     setKeyword(e.target.value);
@@ -26,10 +27,15 @@ export default function SearchInput() {
         <button>buscar</button>
       </form>
 
-      {films?.results?.length > 0 ? (
+      {search?.results?.length > 0 ? (
         <>
-          <FilmList films={films.results} />
-          <PageSelector page={page} setPage={setPage} maxPage={films} />
+          <FilmList films={search.results} />
+          <PageSelector
+            page={search.page}
+            newSearch={newSearch}
+            searchedKeyword={searchedKeyword}
+            maxPage={search.total_pages}
+          />
         </>
       ) : (
         <p>No hay peliculas</p>
