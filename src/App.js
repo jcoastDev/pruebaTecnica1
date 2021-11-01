@@ -4,6 +4,7 @@ import MyList from './pages/MyList/MyList';
 import SearchInput from './pages/SearchInput/SearchInput';
 import Film from './pages/Film/Film';
 import Menu from './components/Menu/Menu';
+import { ComentsContextProvider } from './context/comentsContext';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -14,15 +15,17 @@ function App() {
         <div>
           <Menu />
           <Switch>
-            <Route exact path="/">
-              <SearchInput />
-            </Route>
-            <Route path="/myList">
-              <MyList />
-            </Route>
-            <Route path="/film/:id">
-              <Film />
-            </Route>
+            <ComentsContextProvider>
+              <Route exact path="/">
+                <SearchInput />
+              </Route>
+              <Route path="/myList">
+                <MyList />
+              </Route>
+              <Route path="/film/:filmId">
+                <Film />
+              </Route>
+            </ComentsContextProvider>
           </Switch>
         </div>
       </Router>
