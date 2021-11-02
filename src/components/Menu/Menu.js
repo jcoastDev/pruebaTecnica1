@@ -3,7 +3,7 @@ import './Menu.css';
 
 export default function Menu() {
   return (
-    <ul>
+    <ul className="Menu">
       <li>
         <Link to="/">Home</Link>
       </li>

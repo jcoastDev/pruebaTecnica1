@@ -7,9 +7,9 @@ export default function MyList() {
   const { coments } = useContext(ComentsContext);
 
   return (
-    <ul>
+    <ul className="MyList">
       {coments.map((coment) => (
-        <ComentCard coment={coment} />
+        <ComentCard key={coment.id} coment={coment} />
       ))}
     </ul>
   );

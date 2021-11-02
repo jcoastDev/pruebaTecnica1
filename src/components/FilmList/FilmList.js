@@ -3,7 +3,7 @@ import './FilmList.css';
 
 export default function FilmList({ films }) {
   return (
-    <ul>
+    <ul className="FilmList">
       {films.map((film) => (
         <FilmCard film={film} />
       ))}

@@ -14,7 +14,6 @@ export default function SearchInput() {
     e.preventDefault();
     newSearch(keyword, 1);
     setSearchedKeyword(keyword);
-    console.log(search);
   };
   const handleChange = (e) => {
     setKeyword(e.target.value);
@@ -22,9 +21,9 @@ export default function SearchInput() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="SearchForm" onSubmit={handleSubmit}>
         <input onChange={handleChange} type="text" value={keyword}></input>
-        <button>buscar</button>
+        <button>Buscar</button>
       </form>
 
       {search?.results?.length > 0 ? (
@@ -38,7 +37,7 @@ export default function SearchInput() {
           />
         </>
       ) : (
-        <p>No hay peliculas</p>
+        ''
       )}
     </>
   );

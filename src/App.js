@@ -1,12 +1,12 @@
 import './App.css';
-
-import MyList from './pages/MyList/MyList';
-import SearchInput from './pages/SearchInput/SearchInput';
-import Film from './pages/Film/Film';
-import Menu from './components/Menu/Menu';
-import { ComentsContextProvider } from './context/comentsContext';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { ComentsContextProvider } from './context/comentsContext';
+import Menu from './components/Menu/Menu';
+
+const SearchInput = lazy(() => import('./pages/SearchInput/SearchInput'));
+const Film = lazy(() => import('./pages/Film/Film'));
+const MyList = lazy(() => import('./pages/MyList/MyList'));
 
 function App() {
   return (
@@ -17,13 +17,19 @@ function App() {
           <Switch>
             <ComentsContextProvider>
               <Route exact path="/">
-                <SearchInput />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <SearchInput />
+                </Suspense>
               </Route>
               <Route path="/myList">
-                <MyList />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <MyList />
+                </Suspense>
               </Route>
               <Route path="/film/:filmId">
-                <Film />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Film />
+                </Suspense>
               </Route>
             </ComentsContextProvider>
           </Switch>
