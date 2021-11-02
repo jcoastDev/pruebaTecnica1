@@ -1,0 +1,20 @@
+.FilmDetail {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    margin: 4vw;
+}
+
+.FilmDetail img {
+    align-self: center;
+}
+
+.ComentForm {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ComentForm input {
+    width: 50vw;
+}

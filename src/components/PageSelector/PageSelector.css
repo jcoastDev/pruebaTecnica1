@@ -1,0 +1,14 @@
+.PageSelector{
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    background-color: rgba(0, 0, 0, 0.322);
+    border-radius: 40px;
+    width: 50vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+.PageSelector button{
+    background-color: transparent;
+    border: none;
+}
